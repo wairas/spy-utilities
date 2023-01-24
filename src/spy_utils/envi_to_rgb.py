@@ -12,12 +12,14 @@ def convert(envi_input, rgb_output, bands=None):
     :type envi_input: str
     :param rgb_output: the RGB output to generate
     :type rgb_output: str
-    :param bands: the comma-separated of bands in R,G,B to output
+    :param bands: the comma-separated list of three bands to use as R,G,B channels in output
     :type bands: str
     """
     img = envi.open(envi_input)
     if bands is not None:
         bands = tuple(int(x) for x in bands.replace(" ", "").split(","))
+        if len(bands) != 3:
+            raise Exception("Expected three bands, but got %d instead: %s" % (len(bands), str(bands)))
     save_rgb(rgb_output, img, bands=bands)
 
 
@@ -33,8 +35,8 @@ def main(args=None):
         prog="spy-envi_to_rgb",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("-i", "--input", metavar="FILE", help="the ENVI file to convert", required=True)
-    parser.add_argument("-o", "--output", metavar="FILE", help="the RGB file to generate.", required=True)
-    parser.add_argument("-b", "--bands", metavar="BANDS", help="the comma-separated list of R,G,B 3-tuple to extract.")
+    parser.add_argument("-o", "--output", metavar="FILE", help="the RGB file to generate (JPG or PNG).", required=True)
+    parser.add_argument("-b", "--bands", metavar="BANDS", help="the comma-separated list of the three bands to act as R,G,B channels (band indices are 0-based); combines all bands if not specified.")
     parsed = parser.parse_args(args=args)
     convert(parsed.input, parsed.output, bands=parsed.bands)
 

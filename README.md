@@ -15,8 +15,9 @@ optional arguments:
   -i FILE, --input FILE
                         the ENVI file to convert (default: None)
   -o FILE, --output FILE
-                        the RGB file to generate. (default: None)
+                        the RGB file to generate (JPG or PNG). (default: None)
   -b BANDS, --bands BANDS
-                        the comma-separated list of R,G,B 3-tuple to extract.
-                        (default: None)
+                        the comma-separated list of the three bands to act as
+                        R,G,B channels (band indices are 0-based); combines
+                        all bands if not specified. (default: None)
 ```
