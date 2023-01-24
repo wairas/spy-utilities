@@ -1,6 +1,7 @@
 import argparse
 import json
 import numpy as np
+import os
 import traceback
 import spectral
 import spectral.io.envi as envi
@@ -29,7 +30,7 @@ def interleave_to_str(interleave):
         raise Exception("Unknown interleave type: %d" % interleave)
 
 
-def generate(envi_input, format=None, info_output=None):
+def generate(envi_input, format=None, info_output=None, full_path=False):
     """
     Generates information from an ENVI file.
 
@@ -39,11 +40,18 @@ def generate(envi_input, format=None, info_output=None):
     :type info_output: str
     :param format: the type of output to generate
     :type format: str
+    :param full_path: whether to output the full path of the file or just the base name
+    :type full_path: bool
     """
     img = envi.open(envi_input)
 
+    if full_path:
+        fname = img.filename
+    else:
+        fname = os.path.basename(img.filename)
+
     if format == FORMAT_PLAINTEXT:
-        info = "Filename....: %s\n" % img.filename \
+        info = "Filename....: %s\n" % fname \
                + "# Rows......: %d\n" % img.nrows \
                + "# Cols......: %d\n" % img.ncols \
                + "# Bands.....: %d\n" % img.nbands \
@@ -52,7 +60,7 @@ def generate(envi_input, format=None, info_output=None):
                + "Data format.: %s\n" % np.dtype(img.dtype).name
     elif format == FORMAT_JSON:
         d = dict()
-        d["filename"] = img.filename
+        d["filename"] = fname
         d["rows"] = img.nrows
         d["cols"] = img.ncols
         d["bands"] = img.nbands
@@ -85,8 +93,9 @@ def main(args=None):
     parser.add_argument("-i", "--input", metavar="FILE", help="the ENVI file to obtain information from", required=True)
     parser.add_argument("-o", "--output", metavar="FILE", help="the file to write the information to", required=False)
     parser.add_argument("-f", "--format", choices=FORMATS, default=FORMAT_PLAINTEXT, help="the format to use for the information.", required=False)
+    parser.add_argument("-p", "--full_path", action="store_true", help="whether to use the full path of the input file in the output or just the base name (default)")
     parsed = parser.parse_args(args=args)
-    generate(parsed.input, format=parsed.format, info_output=parsed.output)
+    generate(parsed.input, format=parsed.format, info_output=parsed.output, full_path=parsed.full_path)
 
 
 def sys_main() -> int:

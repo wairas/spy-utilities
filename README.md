@@ -6,7 +6,7 @@ Command-line utilities for the Spectral Python (SPy) library.
 ### spy-envi_info
 
 ```
-usage: spy-envi_info [-h] -i FILE [-o FILE] [-f {text,json}]
+usage: spy-envi_info [-h] -i FILE [-o FILE] [-f {text,json}] [-p]
 
 Outputs information on ENVI files in various formats, on stdout or to a file.
 
@@ -19,6 +19,9 @@ optional arguments:
                         the file to write the information to (default: None)
   -f {text,json}, --format {text,json}
                         the format to use for the information. (default: text)
+  -p, --full_path       whether to use the full path of the input file in the
+                        output or just the base name (default) (default:
+                        False)
 ```
 
 ### spy-envi_to_rgb
