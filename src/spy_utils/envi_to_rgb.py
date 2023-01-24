@@ -30,7 +30,7 @@ def main(args=None):
     """
     parser = argparse.ArgumentParser(
         description="Converts an ENVI file to an RGB. Requires .hdr and .dat files.",
-        prog="spu-envi_to_rgb",
+        prog="spy-envi_to_rgb",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("-i", "--input", metavar="FILE", help="the ENVI file to convert", required=True)
     parser.add_argument("-o", "--output", metavar="FILE", help="the RGB file to generate.", required=True)
