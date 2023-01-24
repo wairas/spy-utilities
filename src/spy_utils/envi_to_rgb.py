@@ -34,7 +34,7 @@ def main(args=None):
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("-i", "--input", metavar="FILE", help="the ENVI file to convert", required=True)
     parser.add_argument("-o", "--output", metavar="FILE", help="the RGB file to generate.", required=True)
-    parser.add_argument("-b", "--bands", metavar="BANDS", help="the comma-separated list of R,G,B 3-tuple to extract.", required=True)
+    parser.add_argument("-b", "--bands", metavar="BANDS", help="the comma-separated list of R,G,B 3-tuple to extract.")
     parsed = parser.parse_args(args=args)
     convert(parsed.input, parsed.output, bands=parsed.bands)
 
