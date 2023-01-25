@@ -37,6 +37,7 @@ setup(
     entry_points={
         "console_scripts": [
             "spy-envi_info=spy_utils.envi_info:sys_main",
+            "spy-envi_to_grayscale=spy_utils.envi_to_grayscale:sys_main",
             "spy-envi_to_rgb=spy_utils.envi_to_rgb:sys_main",
         ]
     },

@@ -24,6 +24,30 @@ optional arguments:
                         False)
 ```
 
+### spy-envi_to_grayscale
+
+```
+usage: spy-envi_to_grayscale [-h] -i FILE -o FILE [-b RANGE] [-v]
+
+Converts an ENVI file to grayscale file(s) based on the selected range of
+bands. Requires .hdr and .dat files.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i FILE, --input FILE
+                        the ENVI file to convert (default: None)
+  -o FILE, --output FILE
+                        the grayscale RGB file to generate (JPG or PNG); use
+                        placeholders '{BAND0}' and '{BAND1}' for 0-based and
+                        1-based band indices in the filename. (default: None)
+  -b RANGE, --bands RANGE
+                        the range of bands to output (1-based indices), e.g.,
+                        'first-last', '7', '3-7,9,45' (default: 1)
+  -v, --verbose         whether to output some progress information. (default:
+                        False)
+```
+
+
 ### spy-envi_to_rgb
 
 ```
