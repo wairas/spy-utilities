@@ -29,6 +29,8 @@ setup(
     install_requires=[
         "spectral",
         "matplotlib",
+        "h5py",
+        "numpy",
     ],
     package_dir={
         '': 'src'
