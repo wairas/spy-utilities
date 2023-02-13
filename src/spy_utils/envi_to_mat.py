@@ -7,16 +7,20 @@ from spy_utils.core.range import Range
 
 
 OUTPUT_TYPE_SIMPLE = "simple"
+OUTPUT_TYPE_HAPPY = "happy"
 
 OUTPUT_TYPES = [
     OUTPUT_TYPE_SIMPLE,
+    OUTPUT_TYPE_HAPPY,
 ]
 
 
-def output_simple(img, mat_output, bands=None):
+def output_simple(envi_input, img, mat_output, bands=None):
     """
     Outputs the hyper-spectral data in a simple format: bands, wavenumbers.
 
+    :param envi_input: the ENVI file to convert
+    :type envi_input: str
     :param img: the hyper spectral image to output
     :param mat_output: the Matlab output to generate
     :type mat_output: str
@@ -28,6 +32,7 @@ def output_simple(img, mat_output, bands=None):
     else:
         wavelength = [[float(img.metadata["wavelength"][b])] for b in bands]
     data = {
+        "filename": envi_input,
         "bands": img.load(),
         "wavelength": wavelength,
     }
@@ -53,7 +58,7 @@ def output(envi_input, mat_output, bands=None, output_type=OUTPUT_TYPE_SIMPLE):
     bands = Range(bands, maximum=img.nbands).indices(zero_based=True)
 
     if output_type == OUTPUT_TYPE_SIMPLE:
-        output_simple(img, mat_output, bands)
+        output_simple(envi_input, img, mat_output, bands)
     else:
         raise Exception("Unhandled output type: %s" % output_type)
 
