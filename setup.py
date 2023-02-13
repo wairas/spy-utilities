@@ -29,7 +29,6 @@ setup(
     install_requires=[
         "spectral",
         "matplotlib",
-        "h5py",
         "numpy",
         "scipy",
     ],
