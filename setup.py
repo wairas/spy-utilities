@@ -31,6 +31,7 @@ setup(
         "matplotlib",
         "h5py",
         "numpy",
+        "scipy",
     ],
     package_dir={
         '': 'src'
