@@ -51,7 +51,7 @@ optional arguments:
 ### spy-envi_to_mat
 
 ```
-usage: spy-envi_to_mat [-h] -i FILE -o FILE [-b BANDS] [-t {simple}]
+usage: spy-envi_to_mat [-h] -i FILE -o FILE [-b BANDS] [-t {simple,happy}]
 
 Converts an ENVI file to a Matlab file. Requires .hdr and .dat files.
 
@@ -64,7 +64,7 @@ optional arguments:
   -b BANDS, --bands BANDS
                         the range of 1-based band indices to output; uses all
                         bands if not specified. (default: first-last)
-  -t {simple}, --output_type {simple}
+  -t {simple,happy}, --output_type {simple,happy}
                         the type of Matlab file to generate. (default: simple)
 ```
 
