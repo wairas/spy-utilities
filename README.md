@@ -51,7 +51,7 @@ optional arguments:
 ### spy-envi_to_mat
 
 ```
-usage: spy-envi_to_mat [-h] -i FILE -o FILE [-b BANDS] [-t {simple,happy}]
+usage: spy-envi_to_mat [-h] -i FILE -o FILE [-b BANDS] [-c {simple,happy}]
 
 Converts an ENVI file to a Matlab file. Requires .hdr and .dat files.
 
@@ -64,15 +64,15 @@ optional arguments:
   -b BANDS, --bands BANDS
                         the range of 1-based band indices to output; uses all
                         bands if not specified. (default: first-last)
-  -t {simple,happy}, --output_type {simple,happy}
-                        the type of Matlab file to generate. (default: simple)
+  -c {simple,happy}, --conversion {simple,happy}
+                        the conversion type to apply. (default: simple)
 ```
 
 
 ### spy-envi_to_rgb
 
 ```
-usage: spy-envi_to_rgb [-h] -i FILE -o FILE [-b BANDS]
+usage: spy-envi_to_rgb [-h] -i FILE -o FILE [-b BANDS] [-c {spy,happy}]
 
 Converts an ENVI file to an RGB. Requires .hdr and .dat files.
 
@@ -86,4 +86,6 @@ optional arguments:
                         the comma-separated list of the three bands to act as
                         R,G,B channels (band indices are 0-based); combines
                         all bands if not specified. (default: None)
+  -c {spy,happy}, --conversion {spy,happy}
+                        how to generate the RGB file. (default: spy)
 ```
