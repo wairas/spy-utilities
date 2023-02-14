@@ -1,3 +1,4 @@
+import numpy as np
 import os
 import scipy.io
 
@@ -19,6 +20,11 @@ def envi_to_happy(envi_input, img, mat_output, bands=None):
     # TODO normalize?
     normcube = spectral_subset(img, bands)
 
+    if "ceiling" in img.metadata:
+        ceiling = img.metadata["ceiling"]
+    else:
+        ceiling = 1
+
     envi_base = os.path.basename(os.path.dirname(envi_input))
     y_str = ""
     for i in range(len(envi_base)):
@@ -32,7 +38,7 @@ def envi_to_happy(envi_input, img, mat_output, bands=None):
 
     data = {
         "FinalMask": [1.0],  # TODO
-        "ceiling": 1.0,  # TODO
+        "ceiling": ceiling,
         "class": True,  # TODO
         "normcube": normcube,
         "lambda": wavelength_subset(img, bands),
