@@ -40,7 +40,7 @@ def envi_to_happy(envi_input, img, mat_output, bands=None):
     data = {
         "FinalMask": [1.0],  # TODO
         "ceiling": ceiling,
-        "class": label == "r",  # x is False
+        "class": label == "r",  # x is uninfected, r is infected TODO from options?
         "normcube": normcube,
         "lambda": wavelength_subset(img, bands),
         "y": y,
