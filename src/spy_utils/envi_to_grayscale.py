@@ -2,7 +2,7 @@ import argparse
 import traceback
 import spectral.io.envi as envi
 from spectral import save_rgb
-from spy_utils.core import Range
+from simple_range import Range
 
 
 PH_BAND_0 = "{BAND0}"

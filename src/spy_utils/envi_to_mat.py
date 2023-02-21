@@ -2,7 +2,7 @@ import argparse
 import traceback
 import spectral.io.envi as envi
 
-from spy_utils.core import Range
+from simple_range import Range
 from spy_utils.mat import envi_to_simple, envi_to_happy
 
 

@@ -31,6 +31,7 @@ setup(
         "matplotlib",
         "numpy",
         "scipy",
+        "simple-range",
     ],
     package_dir={
         '': 'src'
