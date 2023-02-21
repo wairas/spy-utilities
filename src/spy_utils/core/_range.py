@@ -217,8 +217,11 @@ class Range(object):
     def indices(self, zero_based=True):
         """
         Returns the indices specified
-        :param zero_based:
-        :return:
+
+        :param zero_based: whether to return 0-based or 1-based indices
+        :type zero_based: bool
+        :return: the indices
+        :rtype: list
         """
         if self._maximum == -1:
             raise Exception("No maximum number of elements specified!")
